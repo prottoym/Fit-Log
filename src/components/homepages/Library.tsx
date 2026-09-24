@@ -17,21 +17,21 @@ const Library = async () => {
   const libraryData = await getLibraryData();
 
   return (
-    <section id="library" className="mx-6 my-[70px]">
+    <section id="library" className="mx-auto mt-16 w-[calc(100%-48px)] max-w-[1232px] scroll-mt-[81px]">
       
       {/* Heading */}
-      <div className="mb-10">
-        <h1 className="text-4xl font-black uppercase tracking-tight text-white">
+      <div className="mb-8">
+        <h2 className="font-['Oswald'] text-[30px] font-bold uppercase leading-9 tracking-[-0.75px] text-white">
           THE LIBRARY
-        </h1>
+        </h2>
 
-        <p className="mt-2 text-base text-gray-400">
+        <p className="mt-1 text-sm leading-5 text-[#9ca3af]">
           Twelve lifts covering every major muscle group.
         </p>
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {libraryData.map((library:ILibrary) => (
           <LibraryCard key={library.id} library={library} />
         ))}
