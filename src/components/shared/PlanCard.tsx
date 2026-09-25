@@ -12,11 +12,11 @@ interface IPlanCardProps {
 
 const PlanCard = ({ workout, variant, onRemove, onMarkAsDone }: IPlanCardProps) => {
   return (
-    <div className="flex items-center justify-between rounded-2xl border border-[#232732] bg-[#14171e] p-4">
+    <div className="flex flex-col items-start justify-between gap-4 rounded-2xl border border-[#232732] bg-[#14171e] p-4 sm:flex-row sm:items-center">
 
       {/* Thumbnail & Description */}
       <div className="flex items-center gap-4">
-        <div className="h-20 w-36 overflow-hidden rounded-xl bg-[#1f2937]">
+        <div className="h-20 w-36 shrink-0 overflow-hidden rounded-xl bg-[#1f2937]">
           <img
             src={workout.image}
             alt={workout.name}
@@ -33,7 +33,7 @@ const PlanCard = ({ workout, variant, onRemove, onMarkAsDone }: IPlanCardProps) 
             {workout.equipment}
           </p>
 
-          <div className="flex items-center gap-3 pt-1.5 text-xs leading-4 text-[#8a92a0]">
+          <div className="flex flex-wrap items-center gap-3 pt-1.5 text-xs leading-4 text-[#8a92a0]">
             <span className="flex items-center gap-1.5">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="h-3.5 w-3.5">
                 <circle cx="12" cy="12" r="9" />
@@ -60,7 +60,7 @@ const PlanCard = ({ workout, variant, onRemove, onMarkAsDone }: IPlanCardProps) 
       </div>
 
       {/* action button */}
-      <div className="flex items-center gap-3">
+      <div className="flex w-full flex-wrap items-center gap-3 sm:w-auto sm:flex-nowrap">
         <Link
           href={`/workouts/${workout.id}`}
           className="rounded-full border border-[#374151] px-5 py-2 text-xs leading-4 text-white transition hover:bg-white/5"

@@ -3,17 +3,17 @@ import Image from "next/image";
 
 const Banner = () => {
   return (
-    <section className="mx-auto mt-12 h-[448px] w-[calc(100%-48px)] max-w-[1232px] rounded-2xl border border-[#222630] bg-[#15171d]" >
-      <div className="flex h-full items-center justify-between p-14">
+    <section className="mx-auto mt-12 w-[calc(100%-48px)] max-w-[1232px] rounded-2xl border border-[#222630] bg-[#15171d]" >
+      <div className="flex flex-col items-center gap-10 p-8 md:h-[448px] md:flex-row md:items-center md:justify-between md:gap-0 md:p-14">
 
         {/* Left side */}
-        <div className="flex w-[558px] flex-col gap-5">
+        <div className="flex w-full flex-col gap-5 md:w-[558px]">
 
           <p className="pt-[5.75px] text-[11px] font-bold leading-[17px] tracking-[1.1px] text-[#c2f800]">
             WORKOUT LIBRARY
           </p>
 
-          <h1 className="pt-[1.25px] font-['Oswald'] text-[60px] font-bold uppercase leading-[60px] tracking-[-1.5px] text-white">
+          <h1 className="pt-[1.25px] font-['Oswald'] text-4xl font-bold uppercase leading-[1.05] tracking-[-1.5px] text-white sm:text-5xl md:text-[60px] md:leading-[60px]">
             TRAIN WITH INTENT. LOG
             <br />
             EVERY SET.
@@ -46,7 +46,7 @@ const Banner = () => {
         </div>
 
         {/* Right Image */}
-        <div className="flex h-[334px] w-[334px] shrink-0 items-center justify-center">
+        <div className="flex h-[220px] w-[220px] shrink-0 items-center justify-center sm:h-[280px] sm:w-[280px] md:h-[334px] md:w-[334px]">
           <Image
             src={bannerlogo}
             alt="Workout"
