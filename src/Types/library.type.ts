@@ -1,15 +1,15 @@
-
 export interface ILibrary {
     id: number;
     name: string;
     image: string;
     muscleGroups: string[];
     equipment: string;
+    difficulty: string;
     duration: number;
     caloriesBurned: number;
+    sets: number;
+    reps: string;
     rating: number;
     description: string;
-    difficulty: string;
-    reps: string;
-    sets: number;
+    instructions: string[];
 }

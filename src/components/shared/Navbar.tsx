@@ -1,8 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import logo from "@/assets/logo.png";
+import { usePlan } from "@/context/PlanContext";
 
 const Navbar = () => {
+  const pathname = usePathname();
+  const { plan, saved } = usePlan();
+
+  const isWorkouts = pathname === "/" || pathname.startsWith("/workouts");
+  const isMyPlan = pathname.startsWith("/my-plan");
+
+  const activeLink =
+    "rounded-full bg-[#1a2312] px-4 py-1.5 text-xs font-semibold text-[#c2f800]";
+  const inactiveLink = "px-4 py-1.5 text-xs font-medium text-gray-400";
+
   return (
     <div className="navbar min-h-[81px] bg-[#0c0d10]/95 backdrop-blur border-b border-[#1c1f26] px-6 fixed top-0 left-0 z-50 w-full">
 
@@ -38,11 +52,21 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-40 p-2 shadow"
           >
             <li>
-              <Link href="/">Workouts</Link>
+              <Link
+                href="/"
+                className={isWorkouts ? "text-[#c2f800] font-semibold" : ""}
+              >
+                Workouts
+              </Link>
             </li>
 
             <li>
-              <Link href="/my-plan">My Plan</Link>
+              <Link
+                href="/my-plan"
+                className={isMyPlan ? "text-[#c2f800] font-semibold" : ""}
+              >
+                My Plan
+              </Link>
             </li>
           </ul>
         </div>
@@ -70,7 +94,8 @@ const Navbar = () => {
           <li>
             <Link
               href="/"
-              className="rounded-full bg-[#1a2312] px-4 py-1.5 text-xs font-semibold text-[#c2f800]"
+              aria-current={isWorkouts ? "page" : undefined}
+              className={isWorkouts ? activeLink : inactiveLink}
             >
               Workouts
             </Link>
@@ -79,7 +104,8 @@ const Navbar = () => {
           <li>
             <Link
               href="/my-plan"
-              className="px-4 py-1.5 text-xs font-medium text-gray-400"
+              aria-current={isMyPlan ? "page" : undefined}
+              className={isMyPlan ? activeLink : inactiveLink}
             >
               My Plan
             </Link>
@@ -101,7 +127,7 @@ const Navbar = () => {
             <span>Plan</span>
 
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#c2f800] text-[11px] font-bold text-black">
-              0
+              {plan.length}
             </span>
           </Link>
 
@@ -113,7 +139,7 @@ const Navbar = () => {
             <span>Saved</span>
 
             <span className="flex h-5 w-5 items-center justify-center rounded-full border border-[#2d313b] text-[11px] font-medium text-gray-300">
-              0
+              {saved.length}
             </span>
           </Link>
 

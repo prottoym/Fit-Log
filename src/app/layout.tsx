@@ -1,22 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { PlanProvider } from "@/context/PlanContext";
 
 export const metadata: Metadata = {
   title: "FitLog",
-  description: "Your workout companion",
+  description: "Train with intent. Log every set.",
 };
 
 export default function RootLayout({
@@ -25,23 +15,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-screen flex flex-col">
-
-        {/* Navbar */}
-        <Navbar />
-
-        {/* Main Content */}
-        <main className="flex-1 pt-[64px]">
-          {children}
-        </main>
-
-        {/* Footer */}
-        <Footer />
-
+    <html lang="en">
+      <body>
+        <PlanProvider>
+          <Navbar />
+          <main className="pt-[81px]">{children}</main>
+          <Footer />
+        </PlanProvider>
       </body>
     </html>
   );
