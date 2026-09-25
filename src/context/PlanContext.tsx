@@ -1,7 +1,12 @@
 "use client";
 
-import { createContext, useEffect, useState,ReactNode,} from "react";
-import {useContext} from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { ILibrary } from "@/Types/library.type";
 
@@ -12,6 +17,9 @@ interface IPlanContext {
   saved: ILibrary[];
   addToPlan: (workout: ILibrary) => void;
   saveForLater: (workout: ILibrary) => void;
+  removeFromPlan: (id: number) => void;
+  removeFromSaved: (id: number) => void;
+  markAsDone: (id: number) => void;
 }
 
 const PlanContext = createContext<IPlanContext | null>(null);
@@ -59,8 +67,31 @@ export const PlanProvider = ({ children }: { children: ReactNode }) => {
     toast.success("Saved for later");
   };
 
+  const removeFromPlan = (id: number) => {
+    setPlan(plan.filter((w) => w.id !== id));
+  };
+
+  const removeFromSaved = (id: number) => {
+    setSaved(saved.filter((w) => w.id !== id));
+  };
+
+  const markAsDone = (id: number) => {
+    setPlan(plan.filter((w) => w.id !== id));
+    toast.success("Marked as done");
+  };
+
   return (
-    <PlanContext.Provider value={{ plan, saved, addToPlan, saveForLater }}>
+    <PlanContext.Provider
+      value={{
+        plan,
+        saved,
+        addToPlan,
+        saveForLater,
+        removeFromPlan,
+        removeFromSaved,
+        markAsDone,
+      }}
+    >
       {children}
       <Toaster
         position="bottom-right"
