@@ -4,7 +4,7 @@ import Image from "next/image";
 const Banner = () => {
   return (
     <section className="mx-auto mt-12 w-[calc(100%-48px)] max-w-[1232px] rounded-2xl border border-[#222630] bg-[#15171d]" >
-      <div className="flex flex-col items-center gap-10 p-8 md:h-[448px] md:flex-row md:items-center md:justify-between md:gap-0 md:p-14">
+      <div className="flex flex-col items-center gap-10 p-8 md:flex-row md:items-center md:justify-between md:gap-0 md:p-14">
 
         {/* Left side */}
         <div className="flex w-full flex-col gap-5 md:w-[558px]">
@@ -13,7 +13,7 @@ const Banner = () => {
             WORKOUT LIBRARY
           </p>
 
-          <h1 className="pt-[1.25px] font-['Oswald'] text-4xl font-bold uppercase leading-[1.05] tracking-[-1.5px] text-white sm:text-5xl md:text-[60px] md:leading-[60px]">
+          <h1 className="pt-[1.25px] font-['Oswald'] text-4xl font-bold uppercase leading-[1.1] tracking-[-1px] text-white sm:text-[44px]">
             TRAIN WITH INTENT. LOG
             <br />
             EVERY SET.
@@ -46,12 +46,12 @@ const Banner = () => {
         </div>
 
         {/* Right Image */}
-        <div className="flex h-[220px] w-[220px] shrink-0 items-center justify-center sm:h-[280px] sm:w-[280px] md:h-[334px] md:w-[334px]">
+        <div className="flex h-[220px] w-[220px] shrink-0 items-center justify-center sm:h-[280px] sm:w-[280px] md:h-[300px] md:w-[300px]">
           <Image
             src={bannerlogo}
             alt="Workout"
-            width={334}
-            height={334}
+            width={300}
+            height={300}
             priority
             className="h-full w-full object-cover"
           />
