@@ -376,3 +376,4 @@ The main goals of FitLog are:
 7. Create a simple and user-friendly workout management interface.
 
 ---
+**Live Link:** [https://fit-log-iota-bice.vercel.app/](https://fit-log-iota-bice.vercel.app/)
